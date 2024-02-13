@@ -99,8 +99,11 @@ export class Resize extends BaseModule {
 			// right-side resize handler; dragging right enlarges image
 			currentWidth = this.preDragWidth + deltaX;
 		}
+
+		const widthRatio = Math.min((currentWidth / containerWidth) * 100, 100);
+
 		this.img.width = currentWidth;
-		this.img.style.width = `${(currentWidth / containerWidth) * 100}%`;
+		this.img.style.width = `${widthRatio}%`;
 		this.requestUpdate();
 	};
 
